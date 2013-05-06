@@ -17,7 +17,7 @@ class TheatersController < ApplicationController
     @theater.name = params[:name]
     @theater.address = params[:address]
 
-    if @theater.save
+    if @theater.save                #QUESTION??? WHY IF STATEMENT???
       redirect_to "/theaters"
     else
       render 'new'
@@ -25,13 +25,15 @@ class TheatersController < ApplicationController
   end
 
   def edit
-    @theater = Theater.find_by_id(params[:movie_id])
+    @theater = Theater.find_by_id(params[:id]) # fix id - "movie_id" to "id"
   end
 
   def update
     @theater = Theater.find_by_id(params[:id])
+    @theater.name = params[:name] # added code to store data in database
+    @theater.address = params[:address] # added code to store data in database
 
-    if @theater.save
+    if @theater.save                #QUESTION??? WHY IF STATEMENT???
       redirect_to "/theaters"
     else
       render 'edit'
@@ -40,6 +42,7 @@ class TheatersController < ApplicationController
 
   def destroy
     @theater = Theater.find_by_id(params[:id])
+    @theater.destroy #added code to delete data
     redirect_to "/theaters"
   end
 end

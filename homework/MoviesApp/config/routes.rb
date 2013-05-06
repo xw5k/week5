@@ -3,6 +3,7 @@ MoviesApp::Application.routes.draw do
   # Routes for the Theater resource:
   # CREATE
   get '/theaters/new', controller: 'theaters', action: 'new'
+  post "/theaters", controller: 'theaters', action: 'create'   # ADD POST CODING
 
   # READ
   get '/theaters', controller: 'theaters', action: 'index'
@@ -17,6 +18,7 @@ MoviesApp::Application.routes.draw do
   #------------------------------
 
 # Routes for the Movie resource:
+ root :to => "movies#index"
 
  get '/movies/new', controller: 'movies', action: 'new'
  post "/movies", controller: 'movies', action: 'create'
@@ -25,5 +27,7 @@ MoviesApp::Application.routes.draw do
  get "/movies/:id/edit", controller: 'movies', action: 'edit'
  put '/movies/:id', controller: 'movies', action: 'update'
  delete '/movies/:id', controller: 'movies', action: 'destroy'
+
+
 
 end
